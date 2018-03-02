@@ -9,15 +9,122 @@ namespace TennisScore
         [TestMethod]
         public void Love_All()
         {
-            var gameId = 1;
+            Game g = new Game { Id = 1, FirstPlayerScore = 0, SecondPlayerScore = 0 };
+            string checkResult = "Love All";
+            TestBase(g, checkResult);
+        }
 
+        [TestMethod]
+        public void Fifteen_Love()
+        {
+            Game g = new Game { Id = 1,
+                FirstPlayerScore = 1,
+                SecondPlayerScore = 0 };
+            string checkResult = "Fifteen Love";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Thirty_Love()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 2,
+                SecondPlayerScore = 0
+            };
+            string checkResult = "Thirty Love";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Forty_Love()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 3,
+                SecondPlayerScore = 0
+            };
+            string checkResult = "Forty Love";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Love_Fifteen()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 0,
+                SecondPlayerScore = 1
+            };
+            string checkResult = "Love Fifteen";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Fifteen_All()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 1,
+                SecondPlayerScore = 1
+            };
+            string checkResult = "Fifteen All";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Thirty_All()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 2,
+                SecondPlayerScore = 2
+            };
+            string checkResult = "Thirty All";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Deuce()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 3,
+                SecondPlayerScore = 3
+            };
+            string checkResult = "Deuce";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Joey_Adv()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 4,
+                SecondPlayerScore = 3
+            };
+            string checkResult = "Joey_Adv";
+            TestBase(g, checkResult);
+        }
+
+        public void TestBase(Game game, string check)
+        {
             IRepository<Game> repo = Substitute.For<IRepository<Game>>();
-            repo.GetGame(gameId).Returns(new Game { Id = gameId, FirstPlayerScore = 0, SecondPlayerScore = 0 });
+            repo.GetGame(game.Id).Returns(game);
 
             TennisGame tennisGame = new TennisGame(repo);
 
-            var scoreResult = tennisGame.ScoreResult(gameId);
-            Assert.AreEqual("Love All", scoreResult);
+            var scoreResult = tennisGame.ScoreResult(game.Id);
+            
+            Assert.AreEqual(check, scoreResult);
         }
     }
 }
