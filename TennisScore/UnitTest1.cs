@@ -103,6 +103,19 @@ namespace TennisScore
         }
 
         [TestMethod]
+        public void Deuce_4()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 4,
+                SecondPlayerScore = 4
+            };
+            string checkResult = "Deuce";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
         public void Joey_Adv()
         {
             Game g = new Game
@@ -111,7 +124,98 @@ namespace TennisScore
                 FirstPlayerScore = 4,
                 SecondPlayerScore = 3
             };
-            string checkResult = "Joey_Adv";
+            string checkResult = "Joey Adv";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Tom_Adv()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 3,
+                SecondPlayerScore = 4
+            };
+            string checkResult = "Tom Adv";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Joey_Win_64()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 6,
+                SecondPlayerScore = 4
+            };
+            string checkResult = "Joey Win";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Joey_Win_40()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 4,
+                SecondPlayerScore = 0
+            };
+            string checkResult = "Joey Win";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Joey_Win_41()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 4,
+                SecondPlayerScore = 1
+            };
+            string checkResult = "Joey Win";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Joey_Win_42()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 4,
+                SecondPlayerScore = 2
+            };
+            string checkResult = "Joey Win";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Tom_Win_57()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 5,
+                SecondPlayerScore = 7
+            };
+            string checkResult = "Tom Win";
+            TestBase(g, checkResult);
+        }
+
+        [TestMethod]
+        public void Tom_Win_24()
+        {
+            Game g = new Game
+            {
+                Id = 1,
+                FirstPlayerScore = 2,
+                SecondPlayerScore = 4
+            };
+            string checkResult = "Tom Win";
             TestBase(g, checkResult);
         }
 
